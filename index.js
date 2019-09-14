@@ -2,6 +2,10 @@ const express=require('express');
 const mongoose=require('mongoose');
 const app=express();
 const signUp=require('./Routes/SignUp');
+const bodyParser=require('body-parser');
+
+// It will parse incomming post request body
+app.use(bodyParser.json());
 
 app.use((req,res,next)=>{
     res.header("Access-Control-Allow-Origin","*");
@@ -9,14 +13,6 @@ app.use((req,res,next)=>{
 
     next();
 });
-
-// app.use('/',(req,res,next)=>{
-
-//     res.status(200).json({
-//         message:"API is ready, lets go ahead",
-//         data:"You are good to go"
-//     });
-// })
 
 mongoose.connect("mongodb://localhost:27017/hotelDb",{
     useNewUrlParser: true,
