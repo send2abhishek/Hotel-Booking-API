@@ -3,6 +3,7 @@ const mongoose=require('mongoose');
 const app=express();
 const signUp=require('./Routes/SignUp');
 const bodyParser=require('body-parser');
+const signIn=require('./Routes/SignIn')
 
 // It will parse incomming post request body
 app.use(bodyParser.json());
@@ -14,7 +15,9 @@ app.use((req,res,next)=>{
     next();
 });
 
-mongoose.connect("mongodb://localhost:27017/hotelDb",{
+//mongodb+srv://send2abhishek:aryan@cluster0-orw7v.mongodb.net/hotel
+//mongodb://localhost:27017/hotelDb
+mongoose.connect("mongodb+srv://send2abhishek:aryan@cluster0-orw7v.mongodb.net/hotel",{
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
@@ -27,6 +30,7 @@ mongoose.connect("mongodb://localhost:27017/hotelDb",{
 })
 
 app.use('/signup',signUp);
+app.use('/signin',signIn);
 
 app.use((req,res,next)=>{
     const error=new Error('Page Not found');

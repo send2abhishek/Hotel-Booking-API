@@ -3,7 +3,7 @@ const UsersignUpModel=require('../Models/UserSignUp');
 const bcrypt=require('bcrypt');
 
 
-const registerUser= async (req,res,next) =>{
+const registerUser=  (req,res,next) =>{
 
     UsersignUpModel.find({email:req.body.email})
 

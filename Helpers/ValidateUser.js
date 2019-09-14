@@ -31,7 +31,35 @@ const validateUserDetails= (req,res,next) =>{
 
 }
 
+const validateSignIn=(req,res,next)=>{
+
+    const schema=joi.object().keys({
+
+        username:joi.string().required(),
+        password:joi.string().min(4).max(10).required(),
+
+    });
+
+    joi.validate(req.body,schema,(err,value)=>{
+
+        if(err){
+
+            return res.status(400).json({
+
+                message:err.message,
+                responseCode:701
+                
+            });
+        }
+        
+        next();
+    });
+
+
+}
+
 module.exports={
 
-    ValidateUser:validateUserDetails
+    ValidateUser:validateUserDetails,
+    ValidateSignInUser:validateSignIn
 };
