@@ -17,7 +17,7 @@ app.use((req,res,next)=>{
 
 //mongodb+srv://send2abhishek:aryan@cluster0-orw7v.mongodb.net/hotel
 //mongodb://localhost:27017/hotelDb
-mongoose.connect("mongodb+srv://send2abhishek:aryan@cluster0-orw7v.mongodb.net/hotel",{
+mongoose.connect("mongodb://localhost:27017/hotelDb",{
     useNewUrlParser: true,
     useUnifiedTopology: true
 })

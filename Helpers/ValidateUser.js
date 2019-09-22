@@ -35,7 +35,7 @@ const validateSignIn=(req,res,next)=>{
 
     const schema=joi.object().keys({
 
-        username:joi.string().required(),
+        email:joi.string().required(),
         password:joi.string().min(4).max(10).required(),
 
     });

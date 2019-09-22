@@ -4,13 +4,13 @@ const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 
 const ValidateUser= (req,res,next)=>{
-    UsersignUpModel.find({email:req.body.username})
+    UsersignUpModel.find({email:req.body.email})
         .then(result=>{
             
             if(result.length < 1){
 
-                return res.status(404).json({
-                     message:'Username and Password Invalid'
+                return res.status(401).json({
+                     message:'Invalid User email'
                  })
              }
 
@@ -28,7 +28,7 @@ const ValidateUser= (req,res,next)=>{
                 if(resp){
                     
                     const Token=jwt.sign({
-
+                        username:result[0].name,
                         email:result[0].email,
                         country:result[0].country,
                         city:result[0].city
@@ -41,6 +41,7 @@ const ValidateUser= (req,res,next)=>{
                         message:'Auth Success',
                         responseCode:800,
                         token:Token,
+                        username:result[0].name,
                         email:result[0].email,
                         city:result[0].city,
                         country:result[0].country,
