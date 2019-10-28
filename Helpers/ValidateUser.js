@@ -58,8 +58,38 @@ const validateSignIn=(req,res,next)=>{
 
 }
 
+const ValidateOrder=(req,res,next)=>{
+
+    const schema=joi.object().keys({
+
+        hotelId:joi.string().required(),
+        userId:joi.string().required(),
+        persons:joi.number().required()
+
+    });
+
+
+    joi.validate(req.body,schema,(err,value)=>{
+
+        if(err){
+
+            return res.status(400).json({
+
+                message:err.message,
+                responseCode:701,
+                errorMsg:"Hotel Id is missing"
+                
+            });
+        }
+        
+        next();
+    });
+    
+}
+
 module.exports={
 
     ValidateUser:validateUserDetails,
-    ValidateSignInUser:validateSignIn
+    ValidateSignInUser:validateSignIn,
+    ValidateOrders:ValidateOrder
 };

@@ -3,7 +3,8 @@ const mongoose=require('mongoose');
 const app=express();
 const signUp=require('./Routes/SignUp');
 const bodyParser=require('body-parser');
-const signIn=require('./Routes/SignIn')
+const signIn=require('./Routes/SignIn');
+const hotelRoutes=require('./Routes/HotelRoutes');
 
 // It will parse incomming post request body
 app.use(bodyParser.json());
@@ -31,6 +32,7 @@ mongoose.connect("mongodb://localhost:27017/hotelDb",{
 
 app.use('/signup',signUp);
 app.use('/signin',signIn);
+app.use('/hotels',hotelRoutes);
 
 app.use((req,res,next)=>{
     const error=new Error('Page Not found');

@@ -41,6 +41,7 @@ const ValidateUser= (req,res,next)=>{
                         message:'Auth Success',
                         responseCode:800,
                         token:Token,
+                        userId:result[0]._id,
                         username:result[0].name,
                         email:result[0].email,
                         city:result[0].city,
@@ -48,7 +49,7 @@ const ValidateUser= (req,res,next)=>{
                     });
                 }
                 return res.status(401).json({
-                    message:'Auth Failed'
+                    message:'Auth Failed | Invalid username or password'
                 });
 
              })
