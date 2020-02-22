@@ -1,4 +1,6 @@
-const app=require('./index');
-const http=require('http');
-const server=http.createServer(app);
-server.listen(3001);
+const app = require("./index");
+const http = require("http");
+const server = http.createServer(app);
+const port = 3001;
+server.listen(port);
+console.log("application is listining at - ", port);
