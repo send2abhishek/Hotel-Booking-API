@@ -1,8 +1,6 @@
 const hotelModel = require("../Models/HotelModel");
 const mongoose = require("mongoose");
 const CreateNewHotel = (req, res, next) => {
-  console.log("Laure", req.body);
-
   hotelModel
     .find({ regId: req.body.regId })
     .then(response => {
@@ -52,7 +50,7 @@ const getAllHotels = (req, res, next) => {
 
   hotelModel
     .find()
-    .select(" regId Name Description Location Price Aminity")
+    .select(" regId Name Description Location Price Aminity status")
     .then(hotels => {
       res.status(200).json({
         hotels

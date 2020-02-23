@@ -10,7 +10,7 @@ const userHotelSchema = new HotelSchema({
   Location: { type: String, required: true },
   Price: { type: Number, required: true },
   Aminity: { type: String, required: true },
-  status: { type: Boolean }
+  status: { type: Boolean, default: false }
 });
 
 module.exports = mongoose.model("Hotel", userHotelSchema);
