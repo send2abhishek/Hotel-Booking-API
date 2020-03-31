@@ -68,8 +68,11 @@ const hotelOrder = (req, res, next) => {
 const getAllOrderedHotels = (req, res, next) => {
   orderModel
     .find()
-    .select("persons")
-    .populate("hotelId userId", "Name Location Aminity name email city country")
+    //.select("persons")
+    .populate(
+      "hotelId userId",
+      " -_id Name Location Aminity name email city country"
+    )
     .then(result => {
       res.status(200).json({
         result

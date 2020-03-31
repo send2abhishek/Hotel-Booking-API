@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+//  returns a class
 const HotelSchema = mongoose.Schema;
 
 const userHotelSchema = new HotelSchema({
@@ -11,6 +12,7 @@ const userHotelSchema = new HotelSchema({
   Price: { type: Number, required: true },
   Aminity: { type: String, required: true },
   status: { type: Boolean, default: false }
+  //Image: { type: String, required: true }
 });
-
+// returns a class
 module.exports = mongoose.model("Hotel", userHotelSchema);

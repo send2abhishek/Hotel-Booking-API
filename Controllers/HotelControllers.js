@@ -1,5 +1,6 @@
 const hotelModel = require("../Models/HotelModel");
 const mongoose = require("mongoose");
+
 const CreateNewHotel = (req, res, next) => {
   hotelModel
     .find({ regId: req.body.regId })
